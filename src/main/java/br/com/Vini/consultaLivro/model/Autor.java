@@ -1,20 +1,24 @@
 package br.com.Vini.consultaLivro.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Embeddable;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
-@Entity
-@Table
+
+@Embeddable
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Autor {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Long id;
     private String nome;
     private String anoNascimento;
     private String anoMorte;
 
-    @OneToMany(mappedBy = "autor")
     private List<Livro> livros = new ArrayList<>();
 
 

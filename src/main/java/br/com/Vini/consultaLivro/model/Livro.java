@@ -2,9 +2,18 @@ package br.com.Vini.consultaLivro.model;
 
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "LIVRO")
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode(of = "id")
+
 public class Livro {
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,8 +23,7 @@ public class Livro {
     @Enumerated(EnumType.STRING)
     private Idiomas idiomas;
 
-    @ManyToOne
-    @JoinColumn(name = "autor_id")
+    @Embedded
     private Autor autor;
 
     public Livro(DadosLivro dadosLivro) {
